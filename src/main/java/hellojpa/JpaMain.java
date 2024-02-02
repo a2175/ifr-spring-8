@@ -13,10 +13,10 @@ public class JpaMain {
         tx.begin();
 
         Member member = new Member();
-        member.setId(1L);
-        member.setUsername("HelloA");
 
+        System.out.println("member.getId() = " + member.getId());
         em.persist(member);
+        System.out.println("member.getId() = " + member.getId());
 
         tx.commit();
 
