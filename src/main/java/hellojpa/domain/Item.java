@@ -2,6 +2,9 @@ package hellojpa.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Item {
 
@@ -12,6 +15,9 @@ public class Item {
     private String name;
     private int price;
     private int stockQuantity;
+
+    public Item() {
+    }
 
     public Long getId() {
         return id;
@@ -44,4 +50,5 @@ public class Item {
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
+
 }
