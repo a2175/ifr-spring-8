@@ -16,6 +16,9 @@ public class Item {
     private int price;
     private int stockQuantity;
 
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<Category>();
+
     public Item() {
     }
 
@@ -51,4 +54,11 @@ public class Item {
         this.stockQuantity = stockQuantity;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 }

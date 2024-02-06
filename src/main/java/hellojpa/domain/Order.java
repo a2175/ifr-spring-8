@@ -18,6 +18,10 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @OneToOne
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
+
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -45,6 +49,14 @@ public class Order {
         this.member = member;
     }
 
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -68,5 +80,4 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
-
 }
