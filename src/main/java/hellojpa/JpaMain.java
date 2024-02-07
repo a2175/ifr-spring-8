@@ -1,6 +1,6 @@
 package hellojpa;
 
-import hellojpa.domain.Member;
+import hellojpa.domain.*;
 import jakarta.persistence.*;
 
 public class JpaMain {
@@ -13,11 +13,11 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
-        Member member = new Member();
+        Book book = new Book();
+        book.setName("JPA");
+        book.setAuthor("김영한");
 
-        System.out.println("member.getId() = " + member.getId());
-        em.persist(member);
-        System.out.println("member.getId() = " + member.getId());
+        em.persist(book);
 
         tx.commit();
 
