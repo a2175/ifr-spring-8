@@ -8,30 +8,23 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class Order extends BaseEntity {
+public class Order {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private int orderAmount;
 
-    private LocalDateTime orderDate;
-
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
-
-    public Order() {
-    }
+    @Enumerated
+    private Address address;
 
     public Long getId() {
         return id;
@@ -49,35 +42,28 @@ public class Order extends BaseEntity {
         this.member = member;
     }
 
-    public Delivery getDelivery() {
-        return delivery;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public int getOrderAmount() {
+        return orderAmount;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
     }
 
-    public LocalDateTime getOrderDate() {
-        return orderDate;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
 }

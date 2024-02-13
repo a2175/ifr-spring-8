@@ -13,11 +13,9 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
-        Book book = new Book();
-        book.setName("JPA");
-        book.setAuthor("김영한");
-
-        em.persist(book);
+        Member member = new Member();
+        member.setUsername("member1");
+        em.persist(member);
 
         tx.commit();
 
